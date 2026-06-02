@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+img {
+  -webkit-user-drag: none;
+  user-drag: none;
+  pointer-events: none;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #e2e2e2;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+@theme {
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+  }
+  --animate-blink: blink 1s step-start infinite;
+}
