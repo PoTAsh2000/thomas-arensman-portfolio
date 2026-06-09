@@ -7,7 +7,7 @@
 
 > A clean, low-profile personal portfolio showcasing my background, interests, and career experience.
 
-<font color="red"><strong>🔴 LIVE DEMO: [ADD DEPLOYED URL HERE]</strong></font>
+**Live:** [portfolio.thomas-arensman.nl](https://portfolio.thomas-arensman.nl/)
 
 ---
 
