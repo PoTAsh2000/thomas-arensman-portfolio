@@ -95,3 +95,4 @@ Run `npm run type-check` before building to catch type errors early.
 - [ ] Define routes or single-page anchor structure for navigation
 - [ ] Add more content sections (Skills, Education Timeline, Experience Timeline, etc.)
 - [ ] Iterate on original design approach with animations and visual hierarchy
+- [ ] Display version number in the footer (track via `package.json` version field)
