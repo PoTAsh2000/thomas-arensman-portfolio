@@ -1,7 +1,56 @@
 @import "tailwindcss";
 
+@theme {
+  /* Telemetry dark palette */
+  /* Named "carbon" (not "base") so it doesn't shadow Tailwind's text-base font-size utility */
+  --color-carbon: #0a0a0e;
+  --color-elev: #101017;
+  --color-card: #14141c;
+  --color-line: #232330;
+  --color-fg: #ecebe8;
+  --color-muted: #9b98a6;
+  --color-accent: #ffb454;
+  --color-mint: #8ee3d0;
+  --color-violet: #c4b5fd;
+
+  --font-display: "Clash Display", "Satoshi", system-ui, sans-serif;
+  --font-body: "Satoshi", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --animate-blink: blink 1.1s step-start infinite;
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-pulse-dot: pulse-dot 2.2s ease-in-out infinite;
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0; }
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  @keyframes pulse-dot {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(255, 180, 84, 0.5); }
+    50%      { box-shadow: 0 0 0 7px rgba(255, 180, 84, 0); }
+  }
+  @keyframes led {
+    0%, 100% { opacity: 0.25; }
+    50%      { opacity: 1; }
+  }
+}
+
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-carbon);
+  color: var(--color-fg);
+  user-select: none;
+  -webkit-user-select: none;
+  overflow-x: hidden;
 }
 
 img {
@@ -10,17 +59,75 @@ img {
   pointer-events: none;
 }
 
-body {
-  font-family: Arial, sans-serif;
-  background-color: #e2e2e2;
-  user-select: none;
-  -webkit-user-select: none;
+::selection {
+  background: var(--color-accent);
+  color: var(--color-carbon);
 }
 
-@theme {
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50%       { opacity: 0; }
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Slim dark scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-carbon);
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2a36;
+  border-radius: 5px;
+  border: 2px solid var(--color-carbon);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
+
+/* Film grain over everything, very subtle */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  pointer-events: none;
+  opacity: 0.05;
+  /* Own compositor layer so the fixed grain never repaints during scroll */
+  will-change: transform;
+  transform: translateZ(0);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Scroll-reveal (driven by the v-reveal directive) */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal.revealed {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
-  --animate-blink: blink 1s step-start infinite;
+  .reveal,
+  .reveal.revealed {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

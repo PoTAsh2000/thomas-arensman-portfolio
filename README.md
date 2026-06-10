@@ -15,12 +15,15 @@
 
 | Section | Description |
 |---|---|
-| **Introduction** | Animated typewriter welcome banner |
-| **About Me** | Personal background, education, and personality |
-| **Interests & Hobbies** | Four areas: Technology, Sports & Outdoors, Gaming, and Racing |
-| **Career & Experience** | Professional roles with an interactive tech stack slider |
+| **Hero** | Animated introduction with a marquee strip of technologies and protocols |
+| **About Me** | Personal background, mindset, and quick stats |
+| **Interests** | Auto-advancing slider: technology, AI, sports, motorcycles, racing, and gaming |
+| **Career & Education** | Interactive timeline with expandable detail panels |
+| **Tech Stack** | Filterable grid of technologies with skill-level indicators |
+| **Currently Exploring** | Bento grid of current focus areas with expanding detail overlays |
+| **Contact** | Footer with social links plus a floating contact button |
 
-Navigation is handled through scrollable anchor sections, accessible via the quick-link cards on the landing area.
+Navigation is handled through scrollable anchor sections, accessible via the fixed navigation bar with a scroll progress indicator.
 
 ---
 
@@ -41,10 +44,11 @@ Navigation is handled through scrollable anchor sections, accessible via the qui
 
 Features I want to add or change, not in a specific order
 
-- [ ] Redesign site with modern layout and interactive animations
-- [ ] Condense sections with denser, more focused content
+- [x] Redesign site with modern layout and interactive animations
+- [x] Condense sections with denser, more focused content
 - [ ] Internationalization (i18n) support
 - [ ] Section with quotes from colleagues, peers, friends and family
+- [ ] Tech stack cards: display an experience text card on hover + career & education relations
 
 ---
 

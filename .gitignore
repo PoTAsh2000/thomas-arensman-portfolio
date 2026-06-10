@@ -42,3 +42,4 @@ __screenshots__/
 
 # Local deployment documentation (contains infrastructure details)
 DEPLOY.md
+UPGRADE.md
