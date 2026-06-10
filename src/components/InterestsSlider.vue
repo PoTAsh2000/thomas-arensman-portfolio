@@ -128,8 +128,7 @@ onUnmounted(stopTimer)
             <div class="flex items-center gap-5 md:flex-col md:items-start">
               <img
                 :src="slide.image"
-                alt=""
-                aria-hidden="true"
+                :alt="slide.title"
                 class="h-12 w-12 object-contain md:h-[4.5rem] md:w-[4.5rem]"
               />
               <span class="font-mono text-xs text-muted">{{ String(i + 1).padStart(2, '0') }} / {{ String(slides.length).padStart(2, '0') }}</span>
