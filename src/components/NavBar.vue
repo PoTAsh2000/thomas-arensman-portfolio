@@ -65,7 +65,7 @@ onUnmounted(() => {
   >
     <nav class="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-6">
       <a href="#top" class="flex items-center gap-3" @click="closeMenu">
-        <img :src="logo" alt="" class="h-8 w-8" />
+        <img :src="logo" alt="" aria-hidden="true" class="h-8 w-8" />
         <span class="hidden font-display text-base font-semibold tracking-wide md:inline" style="color: #b0b1af">
           Thomas<span class="mx-2 text-accent">·</span>Arensman
         </span>

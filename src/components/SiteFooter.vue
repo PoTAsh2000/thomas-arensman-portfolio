@@ -64,7 +64,7 @@ const socials: Social[] = [
 
       <div id="footer-credits" class="mt-14 flex flex-col gap-2 border-t border-line pt-6 font-mono text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
         <p>&copy; {{ currentYear }} Thomas Arensman. All rights reserved.</p>
-        <p>Built with Vue + Tailwind · Purmerend, NL</p>
+        <p>Built with Vue + Tailwind - Purmerend, NL</p>
       </div>
     </div>
   </footer>
