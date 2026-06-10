@@ -32,7 +32,7 @@ const entries: Entry[] = [
   {
     id: 'hbo',
     period: 'In progress',
-    title: 'HBO · Software Architecture',
+    title: 'HBO - Software Architecture',
     type: 'education',
     summary: 'Deepening the foundation: designing, understanding and optimizing systems at scale.',
     details: [
@@ -80,7 +80,7 @@ const entries: Entry[] = [
   {
     id: 'mbo',
     period: 'Completed',
-    title: 'MBO · Software and Media Development',
+    title: 'MBO - Software and Media Development',
     type: 'education',
     summary: 'Where the foundation was laid, from hobby curiosity to professional craft.',
     details: ['Full-stack fundamentals'],

@@ -32,7 +32,7 @@ interface BentoItem {
 const items: BentoItem[] = [
   {
     id: 'nas',
-    topic: 'NAS · Home labbing',
+    topic: 'NAS - Home labbing',
     short: 'Setting up my own NAS for multiple purposes',
     // text: 'A home project to own my data: storage, backups and self-hosted services, all containerized. Equal parts useful and an excuse to tinker.',
     text: 'Storing data in a safe and centralized location, hosting personal side projects and creating a private media server',
