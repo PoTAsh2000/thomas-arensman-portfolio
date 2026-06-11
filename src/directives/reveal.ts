@@ -1,7 +1,7 @@
 import type { Directive } from 'vue'
 
 /**
- * v-reveal — fades/slides an element in the first time it scrolls into view.
+ * v-reveal, fades/slides an element in the first time it scrolls into view.
  * Optional value sets a transition delay in ms for staggered groups:
  *   <div v-reveal>…</div>
  *   <div v-reveal="150">…</div>

@@ -16,7 +16,14 @@
       "PowerShell(npm audit *)",
       "PowerShell(git *)",
       "PowerShell(git fetch *)",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "PowerShell($bytes = [System.IO.File]::ReadAllBytes\\(\"C:\\\\Users\\\\thare\\\\.claude\\\\plugins\\\\marketplaces\\\\claude-library\\\\skills\\\\commit\\\\plugin.json\"\\); Write-Host \"First 4 bytes \\(hex\\): $\\($bytes[0..3] | ForEach-Object { $_.ToString\\('X2'\\) } | Join-String -Separator ' '\\)\"; Write-Host \"Total bytes: $\\($bytes.Length\\)\"; [System.Text.Encoding]::UTF8.GetString\\($bytes\\))",
+      "PowerShell($bytes = [System.IO.File]::ReadAllBytes\\(\"C:\\\\Users\\\\thare\\\\.claude\\\\plugins\\\\marketplaces\\\\claude-library\\\\skills\\\\commit\\\\plugin.json\"\\); $hexFirst3 = \\($bytes[0..2] | ForEach-Object { $_.ToString\\('X2'\\) }\\) -join ' '; Write-Host \"First 3 bytes: $hexFirst3\"; [System.Text.Encoding]::UTF8.GetString\\($bytes\\))",
+      "Skill(run)",
+      "Bash(node *)",
+      "Bash(npm version *)",
+      "Bash(git tag *)"
     ]
   }
 }
