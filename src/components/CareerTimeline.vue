@@ -140,7 +140,7 @@ function toggle(entry: Entry) {
           <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
             <span class="font-mono text-xs text-muted">
               {{ entry.period }}
-              <span class="text-accent">. </span>
+              <span class="text-accent">· </span>
               <span class="tracking-wider uppercase">{{ typeLabels[entry.type] }}</span>
             </span>
             <svg

@@ -23,7 +23,8 @@
       "Skill(run)",
       "Bash(node *)",
       "Bash(npm version *)",
-      "Bash(git tag *)"
+      "Bash(git tag *)",
+      "Bash(git push *)"
     ]
   }
 }

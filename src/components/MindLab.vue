@@ -71,7 +71,7 @@ const items: BentoItem[] = [
     ],
     span: 'col-span-1 row-span-2 md:col-span-1 md:row-span-2',
     type: 'Programming',
-    cells: 1,
+    cells: 2,
   },
   {
     id: 'models',
@@ -85,7 +85,7 @@ const items: BentoItem[] = [
     ],
     span: 'col-span-1',
     type: 'AI',
-    cells: 2,
+    cells: 1,
   },
   {
     id: 'leetcode',
