@@ -30,6 +30,12 @@ const stats = [
 
 <template>
   <SectionShell section-id="about" index="01" title="About me">
+    <img
+      :src="'/main-image-of-me.png'"
+      alt="Thomas Arensman"
+      class="sr-only"
+      aria-hidden="true"
+    />
     <div class="grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-14">
       <div>
         <p v-reveal class="font-display text-2xl leading-snug font-medium md:text-3xl">

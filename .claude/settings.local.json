@@ -23,7 +23,13 @@
       "Skill(run)",
       "Bash(node *)",
       "Bash(npm version *)",
-      "Bash(git tag *)"
+      "Bash(git tag *)",
+      "Bash(git push *)",
+      "Bash(git restore *)",
+      "Bash(git reset *)",
+      "Bash(git checkout *)",
+      "Skill(project-version-manager)",
+      "Skill(commit)"
     ]
   }
 }
