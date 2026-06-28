@@ -28,6 +28,9 @@
       "Bash(git restore *)",
       "Bash(git reset *)",
       "Bash(git checkout *)",
+      "Bash(git fetch *)",
+      "Bash(git pull *)",
+      "Bash(git stash *)",
       "Skill(project-version-manager)",
       "Skill(commit)"
     ]
