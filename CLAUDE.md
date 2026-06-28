@@ -29,13 +29,23 @@ Single-page portfolio website to present the developer's background, interests, 
 | `npm run format` | Format source code with Prettier |
 | `npm run type-check` | Run TypeScript type checking |
 
+### Branch & PR Policy
+
+- **master is protected** — no direct commits, no force push
+- All work happens in a feature/fix branch: `feat/`, `fix/`, `chore/`, `revert/` prefixes
+- Branch naming: `feat/short-description`, `fix/short-description`, etc.
+- After committing on the branch: push to remote, open a PR, let the human approve and merge
+- Never merge your own PRs
+
 ### Development Workflow
 
-1. Run `npm run dev` to start the dev server
-2. Make changes to Vue files in `src/`
-3. Code is automatically hot-reloaded in the browser
-4. Before committing, run `npm run lint` to fix linting issues
-5. Run `npm run type-check` to ensure no TypeScript errors
+1. Create a branch: `git checkout -b feat/your-description`
+2. Run `npm run dev` to start the dev server
+3. Make changes to Vue files in `src/`
+4. Code is automatically hot-reloaded in the browser
+5. Before committing, run `npm run lint` to fix linting issues
+6. Run `npm run type-check` to ensure no TypeScript errors
+7. Push branch and open PR: `gh pr create`
 
 ## Architecture
 
