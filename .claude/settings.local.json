@@ -29,7 +29,10 @@
       "Bash(git reset *)",
       "Bash(git checkout *)",
       "Skill(project-version-manager)",
-      "Skill(commit)"
+      "Skill(commit)",
+      "Bash(git branch *)",
+      "Bash(curl -s http://localhost:5173/)",
+      "Bash(curl *)"
     ]
   }
 }

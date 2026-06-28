@@ -28,8 +28,7 @@
       </h1>
 
       <p v-reveal="200" class="mt-7 max-w-xl text-xl leading-relaxed text-muted">
-        I design and build scalable, failure-proof data integrations.
-        Curious by default. I don't let a problem go until I understand it.
+        A passionate backend developer excited to keep learning about the latest technologies.
       </p>
     </div>
   </section>
