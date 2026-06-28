@@ -31,12 +31,6 @@
         I design and build scalable, failure-proof data integrations.
         Curious by default. I don't let a problem go until I understand it.
       </p>
-      <img
-        :src="'/main-image-of-me.png'"
-        alt="Thomas Arensman – Backend Developer from The Netherlands"
-        class="sr-only"
-        aria-hidden="true"
-      />
     </div>
   </section>
 </template>
