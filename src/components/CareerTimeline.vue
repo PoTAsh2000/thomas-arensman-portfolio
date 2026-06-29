@@ -114,7 +114,7 @@ function toggle(entry: Entry) {
 <template>
   <SectionShell
     section-id="career"
-    index="03"
+    index="04"
     title="Career & education"
     subtitle="Where professional experience was developed."
   >

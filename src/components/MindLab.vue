@@ -221,7 +221,7 @@ onUnmounted(() => {
 <template>
   <SectionShell
     section-id="now"
-    index="05"
+    index="03"
     title="Currently Exploring"
     subtitle="What has my attention at the moment. Click a tile for the story."
   >
