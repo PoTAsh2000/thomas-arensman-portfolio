@@ -121,7 +121,7 @@ onUnmounted(stopTimer)
         <div
           v-for="(slide, i) in slides"
           :key="slide.title"
-          class="w-full shrink-0 px-8 py-12 md:px-16 md:py-16"
+          class="w-full shrink-0 px-8 py-7 md:px-16 md:py-10"
           :aria-hidden="i !== active"
         >
           <div class="flex flex-col gap-6 md:flex-row md:items-center md:gap-12">
