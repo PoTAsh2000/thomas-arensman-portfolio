@@ -107,11 +107,7 @@ const items: BentoItem[] = [
   },
 ]
 
-const maxCells = Math.max(...items.map((i) => i.cells))
-const minCells = Math.min(...items.map((i) => i.cells))
-
-function tileImage(item: BentoItem): string | null {
-  if (item.cells !== maxCells && item.cells !== minCells) return null
+function tileImage(item: BentoItem): string {
   return typeImages[item.type] ?? infoImage
 }
 
