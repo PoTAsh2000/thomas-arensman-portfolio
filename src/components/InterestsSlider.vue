@@ -19,13 +19,13 @@ const slides: Slide[] = [
   {
     image: technologyImage,
     title: 'Technology',
-    text: "I'm always looking for an excuse to pick up something new. My GitHub has projects in Rust and Go from when I was learning the basics of these languages. I also regularly work through LeetCode problems, partly because I enjoy the puzzle-solving aspect, and partly because I like experiencing the kind of challenges that come up in big tech interviews.",
+    text: "I'm always looking for an excuse to pick up something new. Learning new things always keeps me motivated and interested in the tech industry. I also love working on personal side projects. Even after a day of work it can be relaxing to make some progress on my own projects",
     tags: [],
   },
   {
     image: aiImage,
     title: 'Following the world of AI',
-    text: "Lately, AI engineering has caught my attention. With AI tools becoming a bigger part of development, I've been digging into topics like agentic programming, context engineering, prompt engineering, and the security considerations around AI systems. Beyond that, I still get a kick out of manually learning new programming languages and tools the old-fashioned way.",
+    text: "AI has become a new interest of mine. It has come to the point where I now use it daily during and outside of work. I like to create my own AI working environments.",
     tags: [],
   },
   {
@@ -39,7 +39,7 @@ const slides: Slide[] = [
     title: 'Two wheels',
     text: "Another thing that gets me out of the house is my passion for motorcycles. I ride a Honda CBR600RR. There's nothing quite like heading out on a nice summer ride. It's honestly one of the first things I miss when winter rolls around.",
     tags: [],
-  },
+  },  
   {
     image: racingImage,
     title: 'Racing',
