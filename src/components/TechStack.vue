@@ -71,7 +71,7 @@ const visibleTechs = computed(() =>
 <template>
   <SectionShell
     section-id="stack"
-    index="04"
+    index="05"
     title="Tech stack"
     subtitle="What I work with, and how deep it goes."
   >

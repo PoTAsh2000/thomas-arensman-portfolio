@@ -18,9 +18,9 @@ import ContactFab from '@/components/ContactFab.vue'
     <MarqueeStrip />
     <AboutSection />
     <InterestsSlider />
+    <MindLab />
     <CareerTimeline />
     <TechStack />
-    <MindLab />
   </main>
   <SiteFooter />
   <ContactFab />

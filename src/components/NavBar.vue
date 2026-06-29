@@ -5,9 +5,9 @@ import logo from '@/assets/images/logo/logo_no_fullname.png'
 const links = [
   { index: '01', label: 'About', href: '#about' },
   { index: '02', label: 'Interests', href: '#interests' },
-  { index: '03', label: 'Career', href: '#career' },
-  { index: '04', label: 'Stack', href: '#stack' },
-  { index: '05', label: 'Focus', href: '#now' },
+  { index: '03', label: 'Focus', href: '#now' },
+  { index: '04', label: 'Career', href: '#career' },
+  { index: '05', label: 'Stack', href: '#stack' },
 ]
 
 const contactLinks = [

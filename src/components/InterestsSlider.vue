@@ -19,19 +19,19 @@ const slides: Slide[] = [
   {
     image: technologyImage,
     title: 'Technology',
-    text: "I'm always looking for an excuse to pick up something new. My GitHub has projects in Rust and Go from when I was learning the basics of these languages. I also regularly work through LeetCode problems, partly because I enjoy the puzzle-solving aspect, and partly because I like experiencing the kind of challenges that come up in big tech interviews.",
+    text: "I'm always looking for an excuse to pick up something new. Learning new things always keeps me motivated and interested in the tech industry. I also love working on personal side projects. Even after a day of work it can be relaxing to make some progress on my own projects",
     tags: [],
   },
   {
     image: aiImage,
     title: 'Following the world of AI',
-    text: "Lately, AI engineering has caught my attention. With AI tools becoming a bigger part of development, I've been digging into topics like agentic programming, context engineering, prompt engineering, and the security considerations around AI systems. Beyond that, I still get a kick out of manually learning new programming languages and tools the old-fashioned way.",
+    text: "AI has become a new interest of mine. It has come to the point where I now use it daily during and outside of work. I like to create my own AI working environments.",
     tags: [],
   },
   {
     image: sportsImage,
     title: 'Sports',
-    text: "I've been into sports since I was six, starting with track and field. As a kid I loved the all-round challenge of the decathlon, but as I got older I gravitated towards the 100m and 200m sprint. These days I go to the gym because it fits my schedule better. I like the steady, visible progress you get from it.",
+    text: "I've been into sports since I was six, starting with track and field. As a kid I loved the all-round challenge of the decathlon, but as I got older I gravitated towards the 100m and 200m sprint. These days I go to the gym because it fits my schedule better.",
     tags: [],
   },
   {
@@ -39,11 +39,11 @@ const slides: Slide[] = [
     title: 'Two wheels',
     text: "Another thing that gets me out of the house is my passion for motorcycles. I ride a Honda CBR600RR. There's nothing quite like heading out on a nice summer ride. It's honestly one of the first things I miss when winter rolls around.",
     tags: [],
-  },
+  },  
   {
     image: racingImage,
     title: 'Racing',
-    text: "I’ve been a Formula 1 fan for as long as I can remember, but a few years ago I got really into endurance racing, especially events like the 24H of Le Mans and Spa-Francorchamps, which I’ve attended. Since getting into motorcycles, I also regularly watch MotoGP and have been to the TT of Assen more than once.",
+    text: "I’ve been a Formula 1 fan for as long as I can remember, but a few years ago I got really into endurance racing, especially events like the 24H of Le Mans and Spa-Francorchamps, which I’ve attended. I also regularly watch MotoGP and have been to the TT of Assen more than once.",
     tags: [],
   },
   {
@@ -121,7 +121,7 @@ onUnmounted(stopTimer)
         <div
           v-for="(slide, i) in slides"
           :key="slide.title"
-          class="w-full shrink-0 px-8 py-12 md:px-16 md:py-16"
+          class="w-full shrink-0 px-8 md:px-16 pt-8 pb-4"
           :aria-hidden="i !== active"
         >
           <div class="flex flex-col gap-6 md:flex-row md:items-center md:gap-12">
