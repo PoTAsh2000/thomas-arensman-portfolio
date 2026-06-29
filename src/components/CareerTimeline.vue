@@ -21,24 +21,26 @@ const entries: Entry[] = [
     title: 'Data Integration Specialist',
     type: 'work',
     summary:
-      'Designing and building scalable, failure-proof integrations for logistics, e-commerce and healthcare.',
+      'In my current role as data integration specialist I am focused on designing and building scalable, failure-proof integrations for logistics, e-commerce and healthcare sectors. Most of the work is done independently. However, our team is always working actively together to improve the overall quality of our services',
     details: [
-      'Connecting companies over a diverse set of protocols',
-      'Technical & functional designs, direct customer alignment',
-      'Migrating legacy codebases to modern stacks',
+      'Developing fast and scalable data integration applications.',
+      'Connecting companies over a diverse set of protocols.',
+      'Providing customer support when ad hoc changes to integrations are needed.',
+      'Translating customer requirements into technical & functional designs.',
+      'Migrating legacy codebases to modern stacks.',
+      'Improving application test setups with unit and integration tests to improve code coverage.'
     ],
     tech: [],
   },
   {
     id: 'hbo',
     period: 'In progress',
-    title: 'HBO - Software Architecture',
+    title: 'HBO Software Architecture',
     type: 'education',
-    summary: 'Deepening the foundation: designing, understanding and optimizing systems at scale.',
+    summary: 'Alongside my current role as EDI Specialist I am also diving deeper into the foundations of designing, understanding and optimizing systems at scale. My perspective is, that with the growing amount of AI usage in software development, it is becoming even more important to know the fundamentals of software architecture and translating business goals to working applications',
     details: [
       'Exploring core business concepts like application integration',
       'Focus on architecture, system design and process optimization',
-      'Combined with a full-time development job',
     ],
   },
   {
@@ -46,12 +48,14 @@ const entries: Entry[] = [
     period: 'Earlier',
     title: 'Robotic Process Automation Engineer',
     type: 'work',
-    summary: 'Built RPA solutions and contributed to a self-developed no-code RPA-platform.',
+    summary: 'During my time at Bluepond B.V. I contributed to the development and maintenance of RPA solutions and a self-developed no-code RPA-platform. Work often required me to visit customers at their location which gave a great perspective on how users actually use the products.',
     details: [
-      'Standalone automations in .NET C# with Selenium & UI-Automation',
-      'User acceptance tests, demos and on-site installations',
-      'PowerShell scripts to automate platform deployment',
-      'Contribution to a Laravel-based no-code RPA-platform'
+      'Developing standalone automations in .NET C# with Selenium & UI-Automation',
+      'Contribution to a Laravel-based no-code RPA-platform',
+      'Bringing on site support for user acceptance tests and demos',
+      'Doing on site installations for our no-code RPA-platform',
+      'Writing PowerShell scripts to automate platform deployment and updates'
+      
     ],
     tech: [],
   },
@@ -60,10 +64,11 @@ const entries: Entry[] = [
     period: 'During MBO',
     title: 'Robotic Process Automation Internship',
     type: 'internship',
-    summary: 'Getting experience of development cycles at a large company',
+    summary: 'At my internship at the RAI Amsterdam I was given a great experience of development cycles at a large company',
     details: [
-      'Automated business processes on a platform that was completely new to me',
+      'Working on automating business processes on a platform that was completely new to me',
       'Worked in an agile team with sprints, stand-ups and code reviews',
+      'Translating workflow recordings to technical design and functional documentation',
     ],
   },
   {
@@ -71,10 +76,11 @@ const entries: Entry[] = [
     period: 'During MBO',
     title: 'Software Development Internship',
     type: 'internship',
-    summary: 'First professional experience: real codebases, real deadlines',
+    summary: 'This internship gave me my first professional experience with real codebases, real deadlines and working on systems for actual users',
     details: [
       'Put school theory into practice in a real production environment',
       'Picked up my first frameworks after only knowing plain programming languages',
+      'Being directly in contact with customers'
     ],
   },
   {
@@ -83,7 +89,10 @@ const entries: Entry[] = [
     title: 'MBO - Software and Media Development',
     type: 'education',
     summary: 'Where the foundation was laid, from hobby curiosity to professional craft.',
-    details: ['Full-stack fundamentals'],
+    details: [
+      'Learning the full-stack fundamentals like programming languages, database normalisation, networking and more.',
+      'Traveling to Spain for a three week exchange program where I followed courses in Java and Javascript'
+    ],
   }
 ]
 
