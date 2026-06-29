@@ -31,7 +31,8 @@
       "Skill(project-version-manager)",
       "Skill(commit)",
       "Bash(git pull *)",
-      "Bash(git stash *)"
+      "Bash(git stash *)",
+      "Skill(commit:commit)"
     ]
   }
 }

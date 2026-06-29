@@ -54,7 +54,7 @@ const items: BentoItem[] = [
     points: [
       'Staying up to date with every move in AI development',
       'Improving my own Claude Code setup by using it as a marketplace',
-      'Learning about efficient context management to get the move value out of the tokens I have',
+      'Learning about efficient context management to get the most value out of the tokens I have',
       'Reading, testing and brainstorming about the security risks of AI in software.',
       'Creating specific specialised agents for different workflows'
     ],

@@ -25,7 +25,7 @@ const slides: Slide[] = [
   {
     image: aiImage,
     title: 'Following the world of AI',
-    text: "AI has become a new interest of mine. It has come to the point where I now use it daily during and outside of work. I like to create my own AI working environments.",
+    text: "AI has become one of my bigest interests. It has come to the point where I now use it daily during and outside of work. I like to create my own specialist AI environments for different tasks.",
     tags: [],
   },
   {
@@ -43,7 +43,7 @@ const slides: Slide[] = [
   {
     image: racingImage,
     title: 'Racing',
-    text: "I’ve been a Formula 1 fan for as long as I can remember, but a few years ago I got really into endurance racing, especially events like the 24H of Le Mans and Spa-Francorchamps, which I’ve attended. I also regularly watch MotoGP and have been to the TT of Assen more than once.",
+    text: "I’ve been a Formula 1 fan for as long as I can remember, after a while I got really into endurance racing, especially events like the 24H of Le Mans and Spa-Francorchamps, which I’ve attended. I also regularly watch MotoGP and have been to the TT of Assen more than once.",
     tags: [],
   },
   {
