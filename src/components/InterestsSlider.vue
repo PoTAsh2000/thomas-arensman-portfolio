@@ -31,7 +31,7 @@ const slides: Slide[] = [
   {
     image: sportsImage,
     title: 'Sports',
-    text: "I've been into sports since I was six, starting with track and field. As a kid I loved the all-round challenge of the decathlon, but as I got older I gravitated towards the 100m and 200m sprint. These days I go to the gym because it fits my schedule better. I like the steady, visible progress you get from it.",
+    text: "I've been into sports since I was six, starting with track and field. As a kid I loved the all-round challenge of the decathlon, but as I got older I gravitated towards the 100m and 200m sprint. These days I go to the gym because it fits my schedule better.",
     tags: [],
   },
   {
@@ -43,7 +43,7 @@ const slides: Slide[] = [
   {
     image: racingImage,
     title: 'Racing',
-    text: "I’ve been a Formula 1 fan for as long as I can remember, but a few years ago I got really into endurance racing, especially events like the 24H of Le Mans and Spa-Francorchamps, which I’ve attended. Since getting into motorcycles, I also regularly watch MotoGP and have been to the TT of Assen more than once.",
+    text: "I’ve been a Formula 1 fan for as long as I can remember, but a few years ago I got really into endurance racing, especially events like the 24H of Le Mans and Spa-Francorchamps, which I’ve attended. I also regularly watch MotoGP and have been to the TT of Assen more than once.",
     tags: [],
   },
   {
@@ -121,7 +121,7 @@ onUnmounted(stopTimer)
         <div
           v-for="(slide, i) in slides"
           :key="slide.title"
-          class="w-full shrink-0 px-8 py-7 md:px-16 md:py-10"
+          class="w-full shrink-0 px-8 md:px-16 pt-8 pb-4"
           :aria-hidden="i !== active"
         >
           <div class="flex flex-col gap-6 md:flex-row md:items-center md:gap-12">
