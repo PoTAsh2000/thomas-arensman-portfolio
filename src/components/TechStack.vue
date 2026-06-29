@@ -85,7 +85,7 @@ const visibleTechs = computed(() =>
             ? 'border-accent bg-accent text-carbon'
             : 'border-line text-muted hover:border-accent/40 hover:text-fg'
         "
-        @click="activeFilter = filter"
+        @click="activeFilter = activeFilter === filter && filter !== 'All' ? 'All' : filter"
       >
         {{ filter }}
       </button>
