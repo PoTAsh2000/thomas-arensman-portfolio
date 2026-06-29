@@ -28,14 +28,10 @@
       "Bash(git restore *)",
       "Bash(git reset *)",
       "Bash(git checkout *)",
-      "Bash(git fetch *)",
-      "Bash(git pull *)",
-      "Bash(git stash *)",
       "Skill(project-version-manager)",
       "Skill(commit)",
-      "Bash(git branch *)",
-      "Bash(curl -s http://localhost:5173/)",
-      "Bash(curl *)"
+      "Bash(git pull *)",
+      "Bash(git stash *)"
     ]
   }
 }
