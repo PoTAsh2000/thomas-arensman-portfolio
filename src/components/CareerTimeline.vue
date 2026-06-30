@@ -103,7 +103,7 @@ const typeLabels: Record<EntryType, string> = {
   origin: 'Origin',
 }
 
-const openId = ref<string | null>('integration')
+const openId = ref<string | null>(null)
 
 function toggle(entry: Entry) {
   if (!entry.details.length) return
@@ -164,7 +164,12 @@ function toggle(entry: Entry) {
           </div>
 
           <h3 class="mt-2 font-display text-xl font-semibold md:text-2xl">{{ entry.title }}</h3>
-          <p class="mt-2 max-w-2xl text-base leading-relaxed text-muted">{{ entry.summary }}</p>
+          <p
+            class="mt-2 max-w-2xl overflow-hidden text-base leading-relaxed text-ellipsis text-muted transition-[max-height] duration-300 ease-out"
+            :class="openId === entry.id ? 'max-h-40' : 'line-clamp-1 max-h-[1.625rem]'"
+          >
+            {{ entry.summary }}
+          </p>
 
           <!-- Expandable details (animated via grid-rows trick, no layout locks) -->
           <div
