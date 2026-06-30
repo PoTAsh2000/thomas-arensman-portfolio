@@ -103,7 +103,7 @@ const typeLabels: Record<EntryType, string> = {
   origin: 'Origin',
 }
 
-const openId = ref<string | null>('integration')
+const openId = ref<string | null>(null)
 
 function toggle(entry: Entry) {
   if (!entry.details.length) return
