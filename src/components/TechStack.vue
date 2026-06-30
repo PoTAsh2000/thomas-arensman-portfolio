@@ -47,14 +47,14 @@ const techs: Tech[] = [
   { file: 'bruno', name: 'Bruno', category: 'Tools', level: 4 },
   { file: 'postman', name: 'Postman', category: 'Tools', level: 4 },
   { file: 'claude', name: 'Claude', category: 'AI', level: 5 },
-  { file: 'cursor', name: 'Cursor', category: 'AI', level: 3 },
+  { file: 'cursor', name: 'Cursor', category: 'AI', level: 2 },
 ]
 
 const levelLabels: Record<number, string> = {
   1: 'Curious',
   2: 'Exploring',
   3: 'Comfortable',
-  4: 'Production-ready',
+  4: 'Production ready',
   5: 'Daily driver',
 }
 
@@ -125,7 +125,7 @@ const visibleTechs = computed(() =>
             :style="seg <= tech.level ? { transitionDelay: `${seg * 60}ms` } : undefined"
           />
         </div>
-        <p class="mt-2 font-mono text-[10px] tracking-wide text-muted uppercase">
+        <p class="mt-2 font-mono text-[10px] tracking-wide text-muted uppercase font-semibold">
           {{ levelLabels[tech.level] }}
         </p>
       </article>
