@@ -55,7 +55,7 @@ const stats = [
           v-for="(fact, i) in facts"
           :key="fact.title"
           v-reveal="i * 100"
-          class="group rounded-xl border border-line bg-card p-6 transition-all duration-300 hover:scale-[1.08] hover:border-accent/40"
+          class="group rounded-xl border border-line bg-card p-6 transition-all duration-300 hover:scale-[1.02] hover:border-accent/40"
         >
           <h3 class="font-mono text-xs tracking-[0.2em] text-accent uppercase">{{ fact.title }}</h3>
           <p class="mt-3 text-base leading-relaxed text-muted transition-colors group-hover:text-fg">
