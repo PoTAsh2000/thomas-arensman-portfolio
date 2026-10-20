@@ -114,6 +114,9 @@ function tileImage(item: BentoItem): string {
 const openItem = ref<BentoItem | null>(null)
 const expanded = ref(false)
 const startRect = ref({ top: 0, left: 0, width: 0, height: 0 })
+const gridSize = ref({ width: 0, height: 0 })
+const imageAspect = ref(1)
+const grid = ref<HTMLElement | null>(null)
 const closeBtn = ref<HTMLButtonElement | null>(null)
 
 const tileEls = new Map<string, HTMLElement>()
@@ -122,6 +125,11 @@ function setTileRef(el: unknown, id: string) {
 }
 
 let closeTimer: number | null = null
+
+function measureGrid() {
+  if (!grid.value) return
+  gridSize.value = { width: grid.value.clientWidth, height: grid.value.clientHeight }
+}
 
 function measureTile(id: string) {
   const el = tileEls.get(id)
@@ -132,6 +140,9 @@ function measureTile(id: string) {
     width: el.offsetWidth,
     height: el.offsetHeight,
   }
+  measureGrid()
+  const img = el.querySelector('img')
+  if (img?.naturalWidth && img.naturalHeight) imageAspect.value = img.naturalWidth / img.naturalHeight
   return true
 }
 
@@ -148,7 +159,7 @@ async function open(item: BentoItem) {
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
       expanded.value = true
-      closeBtn.value?.focus()
+      closeBtn.value?.focus({ preventScroll: true })
     })
   })
 }
@@ -179,25 +190,47 @@ const overlayImage = computed(() =>
   openItem.value ? (typeImages[openItem.value.type] ?? infoImage) : null,
 )
 
-// Expanded: small icon bottom-right. Collapsed: mirrors the tile image geometry so
-// large/small tiles hand off seamlessly; mediums (no tile image) fade in/out instead.
-const overlayImageStyle = computed(() =>
-  expanded.value
-    ? {
-        top: 'calc(100% - 6.5rem)',
-        left: 'calc(100% - 6.5rem)',
-        width: '5rem',
-        height: '5rem',
-        opacity: '0.25',
-      }
-    : {
-        top: '10%',
-        left: '10%',
-        width: '80%',
-        height: '80%',
-        opacity: openItem.value && tileImage(openItem.value) ? '0.1' : '0',
-      },
-)
+// The overlay content keeps the final (full grid) size while the box animates,
+// so text never reflows mid-transition. Sizes exclude the overlay's 1px border.
+const contentStyle = computed(() => ({
+  width: `${gridSize.value.width - 2}px`,
+  height: `${gridSize.value.height - 2}px`,
+}))
+
+// Pinned to the content's right edge instead of the overlay's, so it doesn't slide
+const CLOSE_SIZE = 36
+const CLOSE_INSET = 16
+const closeBtnStyle = computed(() => ({
+  left: `${gridSize.value.width - 2 - CLOSE_INSET - CLOSE_SIZE}px`,
+}))
+
+const ICON_SIZE = 80
+const ICON_INSET = 24
+
+// Expanded: small icon bottom-right. Collapsed: transformed onto the tile image
+// rect (inset 10%, object-contain) so the hand-off is seamless. Only transform
+// and opacity animate, which stay on the compositor.
+const overlayImageStyle = computed(() => {
+  const left = gridSize.value.width - 2 - ICON_INSET - ICON_SIZE
+  const top = gridSize.value.height - 2 - ICON_INSET - ICON_SIZE
+  const box = {
+    left: `${left}px`,
+    top: `${top}px`,
+    width: `${ICON_SIZE}px`,
+    height: `${ICON_SIZE}px`,
+  }
+  if (expanded.value) return { ...box, transform: 'none', opacity: '0.25' }
+
+  const tileWidth = startRect.value.width - 2
+  const tileHeight = startRect.value.height - 2
+  const fit = (w: number, h: number) => Math.min(w / imageAspect.value, h)
+  const scale = fit(tileWidth * 0.8, tileHeight * 0.8) / fit(ICON_SIZE, ICON_SIZE)
+  const dx = tileWidth / 2 - (left + ICON_SIZE / 2)
+  const dy = tileHeight / 2 - (top + ICON_SIZE / 2)
+  return { ...box, transform: `translate(${dx}px, ${dy}px) scale(${scale})`, opacity: '0.1' }
+})
+
+let resizeObserver: ResizeObserver | null = null
 
 function onWindowScroll() {
   close()
@@ -210,10 +243,16 @@ function onKeydown(e: KeyboardEvent) {
 onMounted(() => {
   window.addEventListener('scroll', onWindowScroll, { passive: true })
   document.addEventListener('keydown', onKeydown)
+  // Keep the open overlay's content sized to the grid on window resize
+  resizeObserver = new ResizeObserver(() => {
+    if (openItem.value) measureGrid()
+  })
+  if (grid.value) resizeObserver.observe(grid.value)
 })
 onUnmounted(() => {
   window.removeEventListener('scroll', onWindowScroll)
   document.removeEventListener('keydown', onKeydown)
+  resizeObserver?.disconnect()
   if (closeTimer) clearTimeout(closeTimer)
 })
 </script>
@@ -226,16 +265,17 @@ onUnmounted(() => {
     subtitle="What has my attention at the moment. Click a tile for the story."
   >
     <div
-      v-reveal
+      ref="grid"
+      v-reveal.group
       class="bento-grid relative grid grid-cols-2 gap-4 md:h-[34rem] md:grid-cols-4 md:grid-rows-3"
     >
       <button
         v-for="(item, i) in items"
         :key="item.id"
         :ref="(el) => setTileRef(el, item.id)"
-        v-reveal="Math.min(i * 60, 240)"
-        class="relative flex flex-col justify-between gap-3 overflow-hidden rounded-xl border border-line bg-card p-5 text-left transition-[border-color,box-shadow] duration-300 hover:border-accent/40 hover:shadow-lg hover:shadow-accent/5 md:p-6"
+        class="reveal-item relative flex flex-col justify-between gap-3 overflow-hidden rounded-xl border border-line bg-card p-5 text-left transition-[border-color,box-shadow] duration-300 hover:border-accent/40 hover:shadow-lg hover:shadow-accent/5 md:p-6"
         :class="item.span"
+        :style="{ '--reveal-i': i }"
         :aria-expanded="openItem?.id === item.id"
         @click="open(item)"
       >
@@ -267,8 +307,9 @@ onUnmounted(() => {
           :style="overlayImageStyle"
         />
         <div
-          class="flex h-full flex-col overflow-y-auto p-6 transition-opacity duration-300 md:p-8"
+          class="bento-overlay-content flex flex-col overflow-y-auto p-6 transition-opacity duration-300 md:p-8"
           :class="expanded ? 'opacity-100 delay-150' : 'opacity-0'"
+          :style="contentStyle"
         >
           <h3 class="pr-12 font-display text-2xl font-semibold text-accent md:text-3xl">
             {{ openItem.topic }}
@@ -292,8 +333,9 @@ onUnmounted(() => {
 
         <button
           ref="closeBtn"
-          class="absolute top-4 right-4 flex h-9 w-9 items-center justify-center rounded-full border border-line bg-card text-muted transition-all duration-300 hover:border-accent/40 hover:text-accent"
+          class="absolute top-4 flex h-9 w-9 items-center justify-center rounded-full border border-line bg-card text-muted transition-all duration-300 hover:border-accent/40 hover:text-accent"
           :class="expanded ? 'opacity-100 delay-150' : 'opacity-0'"
+          :style="closeBtnStyle"
           aria-label="Close details"
           @click="close"
         >
@@ -319,12 +361,14 @@ onUnmounted(() => {
     height 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* Fixed-size content: isolate its layout from the animating overlay box */
+.bento-overlay-content {
+  contain: strict;
+}
+
 .bento-overlay-img {
   transition:
-    top 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-    left 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-    width 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-    height 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
     opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 </style>

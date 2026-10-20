@@ -113,6 +113,24 @@ body::after {
   transform: none;
 }
 
+/* Group reveal (v-reveal.group): children enter together from one trigger,
+   staggered by their --reveal-i index. A keyframe animation instead of a
+   transition so it never clobbers the children's own hover transitions. */
+.reveal-group .reveal-item {
+  opacity: 0;
+}
+.reveal-group.revealed .reveal-item {
+  opacity: 1;
+  animation: reveal-item-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  animation-delay: calc(var(--reveal-i, 0) * 70ms);
+}
+@keyframes reveal-item-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.98);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -122,6 +140,11 @@ body::after {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+  .reveal-group .reveal-item,
+  .reveal-group.revealed .reveal-item {
+    opacity: 1;
+    animation: none;
   }
   *,
   *::before,
