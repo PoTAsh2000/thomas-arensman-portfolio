@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, computed, nextTick, onMounted, onUnmounted } from 'vue'
 import SectionShell from '@/components/SectionShell.vue'
 import technologyImage from '@/assets/images/interests/technology.png'
 import aiImage from '@/assets/images/bento/ai.png'
@@ -55,18 +55,53 @@ const slides: Slide[] = [
 ]
 
 const AUTO_ADVANCE_MS = 6000
-const active = ref(0)
 const paused = ref(false)
 let timer: ReturnType<typeof setInterval> | null = null
 
-function goTo(index: number) {
-  active.value = ((index % slides.length) + slides.length) % slides.length
+// Infinite loop: the track is [clone of last, ...slides, clone of first].
+// Moving past either end slides onto a clone, then silently jumps to the
+// real slide it mirrors, so the direction of travel never reverses.
+const trackSlides = [
+  { slide: slides[slides.length - 1]!, index: slides.length - 1 },
+  ...slides.map((slide, index) => ({ slide, index })),
+  { slide: slides[0]!, index: 0 },
+]
+const position = ref(1)
+const animate = ref(true)
+const track = ref<HTMLElement | null>(null)
+const active = computed(() => (position.value - 1 + slides.length) % slides.length)
+
+function onClone() {
+  return position.value === 0 || position.value === slides.length + 1
+}
+
+async function snapToReal() {
+  animate.value = false
+  position.value = active.value + 1
+  await nextTick()
+  // Force a reflow so the jump lands before the transition is re-enabled
+  void track.value?.offsetWidth
+  animate.value = true
+}
+
+async function move(delta: number) {
+  if (onClone()) await snapToReal()
+  position.value += delta
+}
+
+function onTrackTransitionEnd(e: TransitionEvent) {
+  if (e.target === track.value && e.propertyName === 'transform' && onClone()) snapToReal()
+}
+
+async function goTo(index: number) {
+  if (onClone()) await snapToReal()
+  position.value = index + 1
 }
 function next() {
-  goTo(active.value + 1)
+  move(1)
 }
 function prev() {
-  goTo(active.value - 1)
+  move(-1)
 }
 
 function startTimer() {
@@ -115,14 +150,17 @@ onUnmounted(stopTimer)
     >
       <!-- Track -->
       <div
-        class="flex transition-transform duration-600 ease-[cubic-bezier(0.22,1,0.36,1)]"
-        :style="{ transform: `translateX(-${active * 100}%)` }"
+        ref="track"
+        class="flex"
+        :class="{ 'transition-transform duration-600 ease-[cubic-bezier(0.22,1,0.36,1)]': animate }"
+        :style="{ transform: `translateX(-${position * 100}%)` }"
+        @transitionend="onTrackTransitionEnd"
       >
         <div
-          v-for="(slide, i) in slides"
-          :key="slide.title"
+          v-for="({ slide, index: i }, t) in trackSlides"
+          :key="t"
           class="w-full shrink-0 px-8 md:px-16 pt-8 pb-4"
-          :aria-hidden="i !== active"
+          :aria-hidden="t !== position"
         >
           <div class="flex flex-col gap-6 md:flex-row md:items-center md:gap-12">
             <div class="flex items-center gap-5 md:flex-col md:items-start">
