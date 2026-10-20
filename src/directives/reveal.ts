@@ -5,6 +5,9 @@ import type { Directive } from 'vue'
  * Optional value sets a transition delay in ms for staggered groups:
  *   <div v-reveal>…</div>
  *   <div v-reveal="150">…</div>
+ * The .group modifier keeps the element itself in place and animates its
+ * .reveal-item children in from one shared trigger, staggered by --reveal-i:
+ *   <div v-reveal.group><div class="reveal-item" style="--reveal-i: 0">…</div></div>
  */
 type RevealValue = number | undefined
 
@@ -35,7 +38,7 @@ function getObserver(): IntersectionObserver {
 
 export const vReveal: Directive<HTMLElement, RevealValue> = {
   mounted(el, binding) {
-    el.classList.add('reveal')
+    el.classList.add(binding.modifiers.group ? 'reveal-group' : 'reveal')
     if (binding.value) {
       el.style.transitionDelay = `${binding.value}ms`
     }
