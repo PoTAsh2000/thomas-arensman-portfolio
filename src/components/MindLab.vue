@@ -324,7 +324,7 @@ onUnmounted(() => {
               :key="point"
               class="flex gap-3 text-base leading-relaxed text-muted"
             >
-              <span class="mt-0.5 text-accent">›</span>
+              <span class="relative -top-[0.1em] text-accent">›</span>
               {{ point }}
             </li>
           </ul>
