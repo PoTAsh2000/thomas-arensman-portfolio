@@ -4,15 +4,6 @@
          (cheaper than mask-image, which forces offscreen rasterization on scroll) -->
     <div class="hero-grid absolute inset-0" aria-hidden="true" />
     <div class="hero-grid-fade absolute inset-0" aria-hidden="true" />
-    <!-- Glows (radial gradients, no filter: blur keeps scrolling cheap) -->
-    <div
-      class="hero-glow-accent absolute -top-48 right-[-16%] h-[44rem] w-[44rem]"
-      aria-hidden="true"
-    />
-    <div
-      class="hero-glow-mint absolute bottom-[-28%] left-[-16%] h-[38rem] w-[38rem]"
-      aria-hidden="true"
-    />
 
     <div class="relative mx-auto w-full max-w-6xl px-6 py-20">
       <p v-reveal class="mb-5 font-mono text-sm text-accent">
@@ -46,12 +37,5 @@
    the page background is flat carbon, but it paints as a plain gradient */
 .hero-grid-fade {
   background: radial-gradient(ellipse 80% 70% at 50% 40%, transparent 35%, var(--color-carbon) 80%);
-}
-
-.hero-glow-accent {
-  background: radial-gradient(circle closest-side, rgba(255, 180, 84, 0.1), transparent 72%);
-}
-.hero-glow-mint {
-  background: radial-gradient(circle closest-side, rgba(142, 227, 208, 0.06), transparent 72%);
 }
 </style>
